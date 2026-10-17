@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#08111f">
+  <title>LogiMind AI | Logistics Intelligence</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">
+      <span class="brand-icon">L</span>
+      <span>LogiMind <small>AI LOGISTICS</small></span>
+    </a>
+    <span class="live"><i></i> OPERATIONS</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">LOGISTICS INTELLIGENCE PLATFORM</p>
+      <h1>Move smarter.<br><span>Deliver better.</span></h1>
+      <p>Track shipments, manage delivery risks and optimize your next route.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat">
+        <span>Total shipments</span>
+        <strong id="total">0</strong>
+      </article>
+      <article class="stat">
+        <span>In transit</span>
+        <strong id="transit">0</strong>
+      </article>
+      <article class="stat">
+        <span>Delay alerts</span>
+        <strong id="delays">0</strong>
+      </article>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div><p class="eyebrow">01 / SHIPMENT CONTROL</p>
+          <h2>Add shipment</h2></div>
+      </div>
+      <form id="shipmentForm" class="form-grid">
+        <label>Shipment ID
+          <input name="id" placeholder="e.g. LM-1001" required>
+        </label>
+        <label>Destination
+          <input name="destination" placeholder="Destination city" required>
+        </label>
+        <label>Origin
+          <input name="origin" placeholder="Origin city" required>
+        </label>
+        <label>Expected delivery
+          <input name="eta" type="datetime-local" required>
+        </label>
+        <label>Status
+          <select name="status">
+            <option>Pending</option>
+            <option>In Transit</option>
+            <option>Delivered</option>
+            <option>Delayed</option>
+          </select>
+        </label>
+        <button class="primary full" type="submit">+ Add shipment</button>
+      </form>
+      <p id="formMessage" class="message" role="status"></p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div><p class="eyebrow">02 / LIVE RECORDS</p>
+          <h2>Shipment tracking</h2></div>
+        <button id="refresh" class="secondary" type="button">Refresh</button>
+      </div>
+      <div id="shipmentList" class="shipment-list"></div>
+      <p class="hint">Records are saved in this browser on this device.</p>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div><p class="eyebrow">03 / ROUTE INTELLIGENCE</p>
+          <h2>Optimize delivery stops</h2></div>
+      </div>
+      <p class="hint">Enter each stop's latitude and longitude. The planner uses straight-line distance to suggest a visit order, not live road traffic.</p>
+      <form id="stopForm" class="form-grid">
+        <label>Stop name
+          <input name="name" placeholder="e.g. Warehouse" required>
+        </label>
+        <label>Latitude
+          <input name="lat" type="number" step="any" min="-90" max="90" placeholder="11.0168" required>
+        </label>
+        <label>Longitude
+          <input name="lon" type="number" step="any" min="-180" max="180" placeholder="76.9558" required>
+        </label>
+        <button class="primary full" type="submit">+ Add route stop</button>
+      </form>
+      <div id="stopList" class="stop-list"></div>
+      <button id="optimize" class="primary full" type="button">Optimize stop order</button>
+      <div id="routeResult" class="route-result" aria-live="polite"></div>
+    </section>
+
+    <section class="panel assistant">
+      <p class="eyebrow">04 / AI LOGISTICS ASSISTANT</p>
+      <h2>Ask LogiMind</h2>
+      <p class="hint">AI integration will be connected in the next step. For now, review your recorded shipments and alerts above.</p>
+      <button class="secondary" id="review" type="button">Review shipment risks</button>
+      <div id="riskResult" class="route-result" aria-live="polite"></div>
+    </section>
+
+    <footer>LOGIMIND AI <span>Hackathon prototype · Built for smarter logistics</span></footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
